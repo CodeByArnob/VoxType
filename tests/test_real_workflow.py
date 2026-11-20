@@ -39,8 +39,9 @@ def test_hold_to_talk_complete_workflow(qapp):
         app.init_ui(qapp, icon_path)
 
     TARGET_HWND = 12345
-    with patch("ctypes.windll.user32.GetForegroundWindow", return_value=TARGET_HWND), \
-         patch("ctypes.windll.user32.SetForegroundWindow") as mock_set_fg, \
+    mock_user32 = MagicMock()
+    mock_user32.GetForegroundWindow.return_value = TARGET_HWND
+    with patch("voxtype.core.text_injector.user32", mock_user32), \
          patch.object(app.recorder, "start_recording", return_value=True) as mock_rec_start, \
          patch.object(app.recorder, "stop_recording") as mock_rec_stop, \
          patch.object(app.whisper, "transcribe") as mock_transcribe, \
