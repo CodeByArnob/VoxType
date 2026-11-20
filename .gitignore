@@ -221,3 +221,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# VoxType Local App Data, Whisper Models, and Temporary Recordings
+models/
+.voxtype/
+*.wav
+*.mp3
+*.bin
+*.safetensors
+*.onnx

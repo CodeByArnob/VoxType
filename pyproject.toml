@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voxtype"
+version = "1.0.0"
+description = "Production-ready, lightweight, local-first voice typing utility powered by Faster-Whisper."
+readme = "README.md"
+authors = [{ name = "Arnobrazz", email = "codebyarnob@gmail.com" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "PySide6>=6.6.0",
+    "sounddevice>=0.4.6",
+    "numpy>=1.24.0",
+    "faster-whisper>=1.0.0",
+    "ctranslate2>=4.0.0",
+    "pynput>=1.7.6",
+    "pyperclip>=1.8.2",
+    "Pillow>=10.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/CodeByArnob/VoxType"
+Repository = "https://github.com/CodeByArnob/VoxType"
+Issues = "https://github.com/CodeByArnob/VoxType/issues"
+
+[project.scripts]
+voxtype = "voxtype.app:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["voxtype*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
