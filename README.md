@@ -3,6 +3,7 @@
 # VoxType
 ### Local Voice Typing
 
+[![Website](https://img.shields.io/badge/website-codebyarnob.github.io%2FVoxType-0284c7.svg?style=flat-square)](https://codebyarnob.github.io/VoxType/)
 [![Release](https://img.shields.io/badge/release-v1.0.0-38bdf8.svg?style=flat-square)](https://github.com/CodeByArnob/VoxType/releases)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-2563eb.svg?style=flat-square)](https://www.python.org/)
 [![Engine](https://img.shields.io/badge/engine-Faster--Whisper-ea580c.svg?style=flat-square)](https://github.com/SYSTRAN/faster-whisper)
@@ -11,7 +12,8 @@
 
 <p align="center">
   A lightweight, open-source desktop voice typing application powered by local <b>Faster-Whisper</b> speech recognition.<br/>
-  Dictate text into any focused desktop application with sub-second latency, zero cloud dependencies, and true push-to-talk convenience.
+  Dictate text into any focused desktop application with sub-second latency, zero cloud dependencies, and true push-to-talk convenience.<br/>
+  <b>🌐 Official Website:</b> <a href="https://codebyarnob.github.io/VoxType/">https://codebyarnob.github.io/VoxType/</a>
 </p>
 
 ---

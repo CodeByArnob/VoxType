@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2026-11-20
 
 ### Added
+- **Official Product Website**: Production-ready responsive website deployed to GitHub Pages (`https://codebyarnob.github.io/VoxType/`) with interactive push-to-talk playground, authentic screen captures, Faster-Whisper benchmarks, tabbed installer guide, FAQ accordion, SEO metadata, and automated GitHub Actions deployment.
 - **Production Architecture**: Complete event-driven desktop voice typing application built with PySide6 and Faster-Whisper.
 - **Physical Modifier Discrimination**: Global low-level keyboard hook distinguishing physical Left Ctrl (`VK_LCONTROL = 162`) from Right Ctrl (`VK_RCONTROL = 163`).
 - **Push-to-Talk & Toggle Modes**: Reliable Hold-to-Talk (record while holding key, transcribe on release) and Toggle-to-Talk modes.

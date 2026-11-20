@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>VoxType • Local Voice Typing Desktop Application</title>
+  <meta name="title" content="VoxType • Local Voice Typing Desktop Application">
+  <meta name="description" content="Production-ready, lightweight, open-source desktop voice typing application powered by local Faster-Whisper. Push-to-talk dictation in any application with sub-second latency and 100% offline privacy.">
+  <meta name="keywords" content="VoxType, voice typing, push to talk, local speech to text, whisper desktop, faster-whisper, offline transcription, wispr flow alternative, open source voice typing, ctranslate2">
+  <meta name="author" content="Arnobrazz">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://codebyarnob.github.io/VoxType/">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="./assets/icon.png">
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codebyarnob.github.io/VoxType/">
+  <meta property="og:title" content="VoxType • Local Voice Typing Desktop Application">
+  <meta property="og:description" content="Hold Left Ctrl to speak. Release to type into any application. Powered by Faster-Whisper, 100% offline with zero cloud APIs.">
+  <meta property="og:image" content="https://codebyarnob.github.io/VoxType/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://codebyarnob.github.io/VoxType/">
+  <meta name="twitter:title" content="VoxType • Local Voice Typing Desktop Application">
+  <meta name="twitter:description" content="Hold Left Ctrl to speak. Release to type into any application. Powered by Faster-Whisper, 100% offline with zero cloud APIs.">
+  <meta name="twitter:image" content="https://codebyarnob.github.io/VoxType/assets/og-image.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "VoxType",
+    "operatingSystem": "Windows 10, Windows 11, Linux Ubuntu",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Production-ready, lightweight, open-source desktop voice typing application powered by local Faster-Whisper. Push-to-talk dictation in any application with sub-second latency.",
+    "softwareVersion": "1.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Person",
+      "name": "Arnobrazz",
+      "url": "https://github.com/CodeByArnob"
+    },
+    "downloadUrl": "https://github.com/CodeByArnob/VoxType/releases/tag/v1.0.0"
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Ambient Glow & Subtle Background Grid -->
+  <div class="glow-bg"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Site Header & Sticky Navbar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="./" class="brand-link" aria-label="VoxType Home">
+        <img src="./assets/icon.png" alt="VoxType Logo" class="brand-logo" width="34" height="34">
+        <span>VoxType</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#features">Features</a></li>
+          <li class="nav-item"><a href="#how-it-works">How It Works</a></li>
+          <li class="nav-item"><a href="#playground">Interactive Demo</a></li>
+          <li class="nav-item"><a href="#models">Models</a></li>
+          <li class="nav-item"><a href="#screenshots">Screenshots</a></li>
+          <li class="nav-item"><a href="#install">Install</a></li>
+          <li class="nav-item"><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/CodeByArnob/VoxType" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://github.com/CodeByArnob/VoxType/releases/tag/v1.0.0" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+          <span>Download v1.0.0</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <!-- Release Announcement Pill -->
+        <a href="https://github.com/CodeByArnob/VoxType/releases/tag/v1.0.0" class="hero-pill-badge" target="_blank" rel="noopener">
+          <span class="pulse-dot"></span>
+          <span>VoxType v1.0.0 Out Now • 100% Local & Offline</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
+        <!-- Headline & Subtitle -->
+        <h1 class="hero-title">
+          Voice typing that feels like <br/>
+          <span class="text-gradient">part of your operating system.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Hold <strong>Left Ctrl</strong> in any desktop application to speak. Release to transcribe locally and type directly at your active cursor. Powered by Faster-Whisper with sub-second latency, zero cloud dependencies, and complete privacy.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-actions">
+          <a href="https://github.com/CodeByArnob/VoxType/releases/tag/v1.0.0" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Download for Windows / Linux</span>
+          </a>
+          <a href="https://github.com/CodeByArnob/VoxType" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>Star on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Quick Install Terminal Pill -->
+        <div class="quick-install-pill">
+          <span>Quick Install:</span>
+          <code>pip install -e .</code>
+          <button class="copy-mini-btn" data-copy="pip install -e ." aria-label="Copy install command">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Hero Window Showcase: Genuine Application Demo GIF -->
+        <div class="hero-visual-wrapper">
+          <div class="hero-window-frame">
+            <div class="window-header">
+              <div class="window-controls">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+              </div>
+              <div class="window-title">VoxType • Desktop Voice Typing</div>
+              <div class="window-badge">Faster-Whisper Ready</div>
+            </div>
+            <div class="window-media">
+              <img src="./images/voxtype_demo.gif" alt="Genuine VoxType Voice Typing Demonstration" width="920" height="660" loading="eager">
+              
+              <!-- Floating Overlay Pill Mockup in Demo -->
+              <div class="floating-pill-demo">
+                <div class="pill-wave-bars">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="pill-text">Listening...</div>
+                <div class="pill-time">00:03</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Push-to-Talk Simulator / Playground -->
+    <section id="playground" class="interactive-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Simulation</span>
+          <h2 class="section-title">Experience Push-to-Talk in Your Browser</h2>
+          <p class="section-subtitle">
+            Hold the microphone button below (or press <kbd class="sim-key-badge">Space</kbd>) to simulate speaking. Release to see Faster-Whisper type text into the live editor.
+          </p>
+        </div>
+
+        <div class="playground-card">
+          <!-- Left: Simulation Controls -->
+          <div class="sim-controls">
+            <button id="simMicTrigger" class="sim-mic-trigger" aria-label="Simulate Voice Typing Push-to-Talk" tabindex="0">
+              <svg class="sim-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="22"/>
+              </svg>
+            </button>
+            <div id="simStatusLbl" class="sim-hint">
+              <strong>Press & Hold</strong> to record speech • Release to type
+            </div>
+            <div class="sim-hint">
+              Default Hotkey: <kbd class="sim-key-badge">Left Ctrl</kbd> • Fully customizable
+            </div>
+          </div>
+
+          <!-- Right: Mock Code / Document Editor -->
+          <div class="sim-editor">
+            <div class="sim-editor-bar">
+              <div class="sim-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>active_document.txt</span>
+              </div>
+              <div id="simMetricsTag" class="sim-metrics-tag">Ready</div>
+            </div>
+            <div id="simEditorContent" class="sim-editor-content">
+              Click and hold the microphone button to test live push-to-talk voice typing...
+              <span class="sim-cursor"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Section (Bento Grid) -->
+    <section id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Capabilities</span>
+          <h2 class="section-title">Built for Speed, Reliability & Absolute Privacy</h2>
+          <p class="section-subtitle">
+            Every layer of VoxType is designed with low-level operating system integration to provide zero-friction dictation without cloud subscriptions.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Bento 1: Left Ctrl Push-to-Talk (Col 8) -->
+          <div class="bento-card bento-col-8">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/></svg>
+            </div>
+            <h3 class="bento-title">Physical Modifier Discrimination</h3>
+            <p class="bento-desc">
+              VoxType hooks low-level Windows keyboard events to distinguish physical <strong>Left Ctrl (VK_LCONTROL = 162)</strong> from Right Ctrl (VK_RCONTROL = 163). Use Left Ctrl freely for Hold-to-Talk without disrupting your browser, code editor, or terminal hotkeys.
+            </p>
+            <div class="bento-visual">
+              <img src="./images/07_shortcuts_config.png" alt="Keyboard Shortcuts Configuration" width="960" height="680" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Bento 2: 100% Offline (Col 4) -->
+          <div class="bento-card bento-col-4">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="bento-title">100% Offline Privacy</h3>
+            <p class="bento-desc">
+              All speech recognition runs strictly on your local machine using CTranslate2 Faster-Whisper. Zero audio data is recorded to disk, zero telemetry is gathered, and no cloud APIs are contacted.
+            </p>
+            <div class="bento-visual" style="padding: 16px; font-family: var(--font-mono); font-size: 0.82rem; color: #10B981;">
+              ✓ Zero Cloud API Tokens<br/>
+              ✓ Zero Audio Retention in RAM<br/>
+              ✓ Air-Gapped Workstation Safe
+            </div>
+          </div>
+
+          <!-- Bento 3: Native Keystroke Injection (Col 4) -->
+          <div class="bento-card bento-col-4">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </div>
+            <h3 class="bento-title">Native Text Injection</h3>
+            <p class="bento-desc">
+              Types directly into any application (VS Code, Word, Chrome, Slack, Discord, Notepad) via Win32 <code>SendInput</code> Unicode simulation, with non-destructive clipboard restore fallback.
+            </p>
+          </div>
+
+          <!-- Bento 4: Floating Overlay Pill (Col 4) -->
+          <div class="bento-card bento-col-4">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="5"/><circle cx="8" cy="12" r="2"/></svg>
+            </div>
+            <h3 class="bento-title">Non-Focus-Stealing Overlay</h3>
+            <p class="bento-desc">
+              A compact 310x52 floating indicator appears on screen during recording with live waveform feedback and elapsed time, engineered with <code>WA_ShowWithoutActivating</code> so your active cursor never loses focus.
+            </p>
+          </div>
+
+          <!-- Bento 5: Audio Calibration & VU Meter (Col 4) -->
+          <div class="bento-card bento-col-4">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+            </div>
+            <h3 class="bento-title">Microphone VU Calibration</h3>
+            <p class="bento-desc">
+              Built-in live VU meter and permission diagnostics allow real-time calibration of input levels and seamless hot-swapping between USB interfaces and built-in mics.
+            </p>
+          </div>
+
+          <!-- Bento 6: Smart Text Formatting & Voice Shortcuts (Col 12) -->
+          <div class="bento-card bento-col-12">
+            <div class="bento-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <h3 class="bento-title">Smart Post-Processing & Custom Voice Shortcuts</h3>
+            <p class="bento-desc">
+              Clean up raw speech automatically with sentence auto-capitalization, punctuation normalization, and automatic elimination of spoken filler words (<em>"um"</em>, <em>"uh"</em>, <em>"ah"</em>). Define custom spoken replacements (e.g., speak <em>"smiley face"</em> ➔ insert <code>😊</code>, speak <em>"new paragraph"</em> ➔ insert <code>\n\n</code>).
+            </p>
+            <div class="bento-visual">
+              <img src="./images/08_formatting_rules.png" alt="Formatting Rules and Voice Replacements" width="960" height="680" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works (Workflow Pipeline) -->
+    <section id="how-it-works" style="background: rgba(13, 19, 34, 0.35);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Architecture</span>
+          <h2 class="section-title">The 4-Stage Voice Typing Engine</h2>
+          <p class="section-subtitle">
+            Engineered from the ground up for sub-second push-to-talk response times on commodity consumer hardware.
+          </p>
+        </div>
+
+        <div class="workflow-steps">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Global Hook</h3>
+            <p class="step-desc">
+              A low-level Windows keyboard hook intercepts Left Ctrl key-down events across the entire OS without stealing active window focus.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3 class="step-title">Audio Stream</h3>
+            <p class="step-desc">
+              A high-precision 16 kHz mono float32 audio stream records directly into a circular memory buffer while streaming RMS levels to the waveform.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3 class="step-title">Local Inference</h3>
+            <p class="step-desc">
+              Upon key release, audio frames are passed to Faster-Whisper using CTranslate2 int8 quantization, utilizing all available CPU threads.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h3 class="step-title">Native Injection</h3>
+            <p class="step-desc">
+              Transcribed text is cleaned, formatted, and injected at the active cursor position in your target window in under 400 milliseconds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faster-Whisper Model Support Matrix -->
+    <section id="models">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Model Benchmarks</span>
+          <h2 class="section-title">Faster-Whisper Model Variants</h2>
+          <p class="section-subtitle">
+            Choose the model that matches your hardware and workload. Download, switch, or remove models directly within VoxType.
+          </p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="model-table">
+            <thead>
+              <tr>
+                <th>Model Variant</th>
+                <th>Disk Size</th>
+                <th>RAM Usage</th>
+                <th>Measured Latency</th>
+                <th>Accuracy</th>
+                <th>Recommended Hardware</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tiny</strong></td>
+                <td>~75 MB</td>
+                <td>~500 MB</td>
+                <td><span class="badge-tag badge-speed">&lt; 200 ms</span></td>
+                <td>Good</td>
+                <td>Older laptops, low-power quad-cores</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Base</strong>
+                  <span class="badge-tag badge-active" style="margin-left: 8px;">DEFAULT</span>
+                </td>
+                <td>~145 MB</td>
+                <td>~800 MB</td>
+                <td><span class="badge-tag badge-speed">~300 ms</span></td>
+                <td>Very Good</td>
+                <td>Balanced everyday voice typing on any modern PC</td>
+              </tr>
+              <tr>
+                <td><strong>Small</strong></td>
+                <td>~480 MB</td>
+                <td>~1.5 GB</td>
+                <td><span class="badge-tag badge-speed">~600 ms</span></td>
+                <td>High</td>
+                <td>Technical coding, complex terminology</td>
+              </tr>
+              <tr>
+                <td><strong>Medium</strong></td>
+                <td>~1.5 GB</td>
+                <td>~3.5 GB</td>
+                <td><span class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">~1.2 s</span></td>
+                <td>Excellent</td>
+                <td>Multilingual dictation, 8+ core CPUs</td>
+              </tr>
+              <tr>
+                <td><strong>Large-v3</strong></td>
+                <td>~3.1 GB</td>
+                <td>~6.0 GB</td>
+                <td><span class="badge-tag" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">~2.5 s</span></td>
+                <td>State of the Art</td>
+                <td>High-end workstations & GPUs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real Application Screenshot Gallery -->
+    <section id="screenshots">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interface Showcase</span>
+          <h2 class="section-title">Genuine Application Screen Captures</h2>
+          <p class="section-subtitle">
+            Every screenshot is captured directly from the running VoxType PySide6 desktop application. Click any image to view in full resolution.
+          </p>
+        </div>
+
+        <!-- Gallery Tabs -->
+        <div class="gallery-tabs">
+          <button class="gallery-tab-btn active" data-screen="main">Main Voice Typing</button>
+          <button class="gallery-tab-btn" data-screen="recording">Active Recording</button>
+          <button class="gallery-tab-btn" data-screen="transcribed">Completed & History</button>
+          <button class="gallery-tab-btn" data-screen="models">Whisper Models</button>
+          <button class="gallery-tab-btn" data-screen="audio">Audio & VU Meter</button>
+          <button class="gallery-tab-btn" data-screen="shortcuts">Shortcuts Pad</button>
+          <button class="gallery-tab-btn" data-screen="formatting">Formatting Rules</button>
+          <button class="gallery-tab-btn" data-screen="settings">Settings & About</button>
+          <button class="gallery-tab-btn" data-screen="floating">Floating Pill</button>
+        </div>
+
+        <!-- Gallery Stage -->
+        <div class="gallery-stage">
+          <img id="galleryStageImg" class="gallery-view-img" src="./images/01_main_idle.png" alt="Main Voice Typing Interface" width="960" height="680">
+          <div class="gallery-caption">
+            <span id="galleryCaptionTitle" style="font-weight: 700; color: #F8FAFC;">Main Voice Typing Interface</span>
+            <span id="galleryCaptionDesc">Focused desktop view with 60 FPS animated microphone, real-time waveform, and session metrics.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation & Setup Guide -->
+    <section id="install" style="background: rgba(13, 19, 34, 0.35);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Quick Start</span>
+          <h2 class="section-title">Install VoxType in Minutes</h2>
+          <p class="section-subtitle">
+            Get up and running locally with Python 3.10+ on Windows or Linux.
+          </p>
+        </div>
+
+        <div class="install-container">
+          <div class="install-nav">
+            <button class="install-tab-btn active" data-tab="tab-win">Windows PowerShell</button>
+            <button class="install-tab-btn" data-tab="tab-linux">Linux (Ubuntu/Debian)</button>
+            <button class="install-tab-btn" data-tab="tab-pip">Python Pip</button>
+            <button class="install-tab-btn" data-tab="tab-run">Running the App</button>
+          </div>
+
+          <!-- Tab 1: Windows -->
+          <div id="tab-win" class="install-panel active">
+            <div class="code-box">
+              <code>git clone https://github.com/CodeByArnob/VoxType.git<br/>cd VoxType<br/>python -m venv .venv<br/>.venv\Scripts\activate<br/>pip install -e .</code>
+              <button class="copy-btn" data-copy="git clone https://github.com/CodeByArnob/VoxType.git&#10;cd VoxType&#10;python -m venv .venv&#10;.venv\Scripts\activate&#10;pip install -e .">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab 2: Linux -->
+          <div id="tab-linux" class="install-panel">
+            <div class="code-box">
+              <code>sudo apt update &amp;&amp; sudo apt install -y python3-venv libasound2-dev<br/>git clone https://github.com/CodeByArnob/VoxType.git<br/>cd VoxType<br/>python3 -m venv .venv<br/>source .venv/bin/activate<br/>pip install -e .</code>
+              <button class="copy-btn" data-copy="sudo apt update &amp;&amp; sudo apt install -y python3-venv libasound2-dev&#10;git clone https://github.com/CodeByArnob/VoxType.git&#10;cd VoxType&#10;python3 -m venv .venv&#10;source .venv/bin/activate&#10;pip install -e .">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab 3: Pip -->
+          <div id="tab-pip" class="install-panel">
+            <div class="code-box">
+              <code>pip install --upgrade pip<br/>pip install -e .</code>
+              <button class="copy-btn" data-copy="pip install --upgrade pip&#10;pip install -e .">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab 4: Running -->
+          <div id="tab-run" class="install-panel">
+            <div class="code-box">
+              <code>python run.py<br/># or run directly via entry point:<br/>voxtype</code>
+              <button class="copy-btn" data-copy="python run.py">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions (FAQ) -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about VoxType's offline engine, security, and desktop integration.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <!-- Q1 -->
+          <div class="faq-item open">
+            <button class="faq-question">
+              <span>Does VoxType send any audio or data to external cloud servers?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <strong>Never.</strong> VoxType operates 100% locally on your device. Speech recognition is executed directly on your CPU via CTranslate2 Faster-Whisper. Audio is captured into a temporary memory buffer and immediately discarded. No telemetry, audio recordings, or personal data ever leave your machine.
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Why does VoxType use Left Ctrl as the default shortcut?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Left Ctrl provides natural push-to-talk ergonomics for left pinky access while typing. Crucially, VoxType hooks low-level virtual key codes to discriminate physical <code>VK_LCONTROL (162)</code> from <code>VK_RCONTROL (163)</code>. This ensures Right Ctrl remains completely free for your regular shortcuts. You can also customize the shortcut to any key (e.g. F8, F9, Alt+Space) in the Shortcuts tab.
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does text insertion work across different applications?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              VoxType tracks the foreground application window using Win32 API calls (<code>GetForegroundWindow</code> / <code>SetForegroundWindow</code>) and injects text at the active cursor using native Unicode <code>SendInput</code> keystroke simulation. If an application blocks direct keystroke simulation, VoxType seamlessly uses a non-destructive clipboard paste fallback (restoring your previous clipboard contents in milliseconds).
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do I need a dedicated GPU (Nvidia CUDA) to run VoxType?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <strong>No dedicated GPU is required.</strong> Faster-Whisper is powered by CTranslate2, an inference engine optimized for fast CPU execution using 8-bit integer quantization (<code>int8</code>). On a standard modern CPU (4+ cores), the default <strong>Base</strong> model transcribes speech with sub-second latency (typically ~300ms).
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I use VoxType in languages other than English?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Yes! Whisper models support over 90 languages including English, Spanish, French, German, Japanese, Chinese, and many more. You can change your spoken language directly from the Models tab dropdown.
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Is VoxType completely free and open source?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Yes, VoxType is 100% free and open-source software licensed under the permissive <a href="https://github.com/CodeByArnob/VoxType/blob/main/LICENSE" target="_blank" rel="noopener" style="color:#38BDF8; text-decoration: underline;">MIT License</a>. There are no subscriptions, ads, or paywalled features.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Modal Lightbox -->
+  <div id="modalLightbox" class="modal-lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Lightbox">
+    <button id="modalCloseBtn" class="modal-close" aria-label="Close Lightbox">&times;</button>
+    <img id="lightboxImg" class="modal-img" src="./images/01_main_idle.png" alt="VoxType Screenshot Zoomed">
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div>
+          <div class="brand-link" style="margin-bottom: 14px;">
+            <img src="./assets/icon.png" alt="VoxType Logo" width="30" height="30">
+            <span>VoxType</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; max-width: 320px;">
+            Production-ready, lightweight, open-source desktop voice typing application powered by local Faster-Whisper.
+          </p>
+        </div>
+
+        <!-- Col 2: Product -->
+        <div>
+          <div class="footer-col-title">Product</div>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#playground">Interactive Demo</a></li>
+            <li><a href="#models">Whisper Models</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Resources -->
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="https://github.com/CodeByArnob/VoxType" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="https://github.com/CodeByArnob/VoxType/releases/tag/v1.0.0" target="_blank" rel="noopener">Release v1.0.0</a></li>
+            <li><a href="https://github.com/CodeByArnob/VoxType/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guide</a></li>
+            <li><a href="https://github.com/CodeByArnob/VoxType/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+            <li><a href="https://github.com/CodeByArnob/VoxType/issues" target="_blank" rel="noopener">Issue Tracker</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Community & License -->
+        <div>
+          <div class="footer-col-title">Open Source</div>
+          <ul class="footer-links">
+            <li><a href="https://github.com/CodeByArnob/VoxType/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+            <li><a href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener">Faster-Whisper</a></li>
+            <li><a href="https://github.com/OpenAI/whisper" target="_blank" rel="noopener">OpenAI Whisper</a></li>
+            <li><a href="https://pypi.org/project/PySide6/" target="_blank" rel="noopener">PySide6 (Qt)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 VoxType. Open source under the <a href="https://github.com/CodeByArnob/VoxType/blob/main/LICENSE" target="_blank" rel="noopener" style="color: var(--accent-primary);">MIT License</a>.
+        </div>
+        <div>
+          Created with care by <a href="https://github.com/CodeByArnob" target="_blank" rel="noopener" style="color: var(--accent-primary); font-weight: 600;">Arnobrazz</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/main.js"></script>
+</body>
+</html>
