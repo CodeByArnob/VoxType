@@ -38,7 +38,9 @@ class INPUT(ctypes.Structure):
     _fields_ = [("type", wintypes.DWORD), ("u", _INPUT_UNION)]
 
 
-user32 = ctypes.windll.user32
+user32 = getattr(ctypes, "windll", None)
+if user32:
+    user32 = user32.user32
 
 
 class TextInjector:
@@ -52,6 +54,8 @@ class TextInjector:
 
     def capture_foreground_window(self) -> int:
         """Remembers current active window handle before any popup takes focus."""
+        if not user32:
+            return 0
         try:
             hwnd = user32.GetForegroundWindow()
             if hwnd:
@@ -62,7 +66,7 @@ class TextInjector:
 
     def restore_target_window(self) -> None:
         """Ensures the original target application has focus before typing."""
-        if not self._target_hwnd:
+        if not self._target_hwnd or not user32:
             return
         try:
             current = user32.GetForegroundWindow()
@@ -97,6 +101,8 @@ class TextInjector:
 
     def _inject_via_sendinput(self, text: str) -> bool:
         """Simulates native keyboard Unicode inputs."""
+        if not user32:
+            return False
         try:
             inputs = []
             for char in text:
@@ -176,6 +182,8 @@ class TextInjector:
 
     def _send_ctrl_v(self) -> None:
         """Sends native Ctrl+V key combination."""
+        if not user32:
+            return
         ctrl_down = INPUT(type=INPUT_KEYBOARD)
         ctrl_down.ki = KEYBDINPUT(wVk=VK_CONTROL, wScan=0, dwFlags=0, time=0, dwExtraInfo=None)
 
