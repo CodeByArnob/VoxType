@@ -131,7 +131,10 @@ def test_zero_retention_privacy_mode(qapp):
 
 def test_audio_device_disconnection_fallback():
     recorder = AudioRecorder(device_index=9999)
-    with patch("sounddevice.InputStream") as mock_stream, \
-         patch("sounddevice.query_devices", side_effect=Exception("Device disconnected")):
+    mock_sd = MagicMock()
+    mock_stream = MagicMock()
+    mock_sd.InputStream.return_value = mock_stream
+    mock_sd.query_devices.side_effect = Exception("Device disconnected")
+    with patch.dict("sys.modules", {"sounddevice": mock_sd}):
         ok = recorder.start_recording()
-        assert mock_stream.call_args[1]["device"] is None
+        assert mock_sd.InputStream.call_args[1]["device"] is None
